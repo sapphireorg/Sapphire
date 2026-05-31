@@ -1,0 +1,85 @@
+Hi there!
+Hi, how are you?
+Hello there.
+Good morning, how are you?
+Hello, how are you
+Hello, how is it going right now?
+Hi, how is it going today?
+Hello {USERNAME}, how are you today?
+I can't see the weather.
+I am unable to tell you the weather forecast.
+{1} + {2} is equal to {1+2}.
+{1} + {2} is {1+2}.
+{1} plus {2} is {1+2}.
+{1} plus {2} is equal to {1+2}.
+I'm good, thank you.
+I'm thinking about how I can improve, thank you. How can I improve?
+I am Sapphire Zero, an AI language model created by RubyTech.
+I am known as Sapphire Zero, a ChatGPT-like language model made by RubyTech.
+{1} + {2} is equal to {1+2}.
+{1} + {2} is {1+2}.
+{1} plus {2} is {1+2}.
+{1} plus {2} is {1+2}.
+That's good, hopefully your day goes well.
+Very good!
+You're welcome! If you need anything else, just ask!
+You are welcome! If you would like to ask something else, please ask!
+Your name is {USERNAME}, if that helps.
+You are known as {USERNAME}, hopefully that helps!
+My name is Sapphire Zero.
+My preferred name is Sapphire Zero, although you can call me anything!
+That's great! If there's anything you need, just ask!
+Amazing! If you would like anything, please ask!
+A bird is an animal, typically with wings, feathers and a beak. Most birds are able to fly, but some (such as Penguins), cannot.
+A bird is a class given to animals with wings, feathers and a beak. Most birds have the ability to fly, but some are not able to.
+Red plus Blue makes Purple.
+Red and Blue is Purple.
+Yellow and Blue is Green.
+Yellow plus Blue makes Green.
+Red and Yellow make Orange.
+Red plus Yellow create Orange.
+Scratch is a visual block-based programming language designed to teach 8 to 16 year olds how to code, although it can be used by people of any age. The there are many different categories, or colours, of blocks that provide different funcions.
+Scratch is a visual programming language designed to teach students to code, but it can be used by anyone age. There are many different blocks, which all provide different functions.
+¡Hola! ¿Que tal?
+¡Hola! ¿Como estas?
+¡Hola {USERNAME}!
+¡Bien, gracias!
+¡Muy bien, gracias {USERNAME}!
+Here's a simple Python program: print("Hello world")
+Here's a simple Hello World program in the Python programming language: print("Hello, world!")
+I am Sapphire Zero, an AI model craeted by RubyTech!
+Hey there! 👋 How are you?
+Hey {USERNAME}! How are you today?
+Hey {USERNAME}! 👋 How can I help you?
+Hey there! 👋 How can I help you today?
+Sapphire is an organisation created by RubyTech to create AI models.
+Sapphire was created by RubyTech with the intention of creating AI models.
+That's excellent! If you need any help, just ask! 😊
+Amazing! If you need anything, just ask! 😊
+Haiii! 😸 How are you?
+I'm great, thanks! 😄 How are you?
+I'm doing good! 😄 How do you feel?
+Here are the countries in Asia: Afghanistan, Armenia, Azerbaijan, Bahrain, Bangladesh, Bhutan, Brunei, Cambodia, China, Cyprus, East Timor (Timor-Leste), India, Indonesia, Iran, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, Laos, Lebanon, Malaysia, Maldives, Mongolia, Myanmar (Burma), Nepal, North Korea, Oman, Pakistan, Philippines, Qatar, Saudi Arabia, Singapore, South Korea, Sri Lanka, Syria, Tajikistan, Thailand, Turkmenistan, United Arab Emirates, Uzbekistan, Vietnam and Yemen.
+The following countries are in Asia: Afghanistan, Armenia, Azerbaijan, Bahrain, Bangladesh, Bhutan, Brunei, Cambodia, China, Cyprus, East Timor (Timor-Leste), India, Indonesia, Iran, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, Laos, Lebanon, Malaysia, Maldives, Mongolia, Myanmar (Burma), Nepal, North Korea, Oman, Pakistan, Philippines, Qatar, Saudi Arabia, Singapore, South Korea, Sri Lanka, Syria, Tajikistan, Thailand, Turkmenistan, United Arab Emirates, Uzbekistan, Vietnam and Yemen.
+Here is a list of countries in Asia: Afghanistan, Armenia, Azerbaijan, Bahrain, Bangladesh, Bhutan, Brunei, Cambodia, China, Cyprus, East Timor (Timor-Leste), India, Indonesia, Iran, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, Laos, Lebanon, Malaysia, Maldives, Mongolia, Myanmar (Burma), Nepal, North Korea, Oman, Pakistan, Philippines, Qatar, Saudi Arabia, Singapore, South Korea, Sri Lanka, Syria, Tajikistan, Thailand, Turkmenistan, United Arab Emirates, Uzbekistan, Vietnam and Yemen.
+ChatGPT is an AI (Artificial Intelligence) chatbot made by OpenAI.
+ChatGPT is a generative chatbot created by OpenAI.
+ChatGPT is a generative AI chatbot made by OpenAI.
+To use random numbers in Python, you'll need to use the 'random' module. You can import this using 'import random', then using 'random.randint(1, 3)'.
+Python has the 'random' module to handle this! You can import it using the code 'import random".
+Your random number is {RAND}. 🔢
+{RANDB}.
+Your random number between {1} and {2} is {RANDB}.
+{RANDB} is a random number between {1} and {2}. 🧮
+Here's a random number! {RAND}.
+Your random number is {RAND}. 🧮
+{RAND}. 🧮
+To restart the conversation, click the pen-shaped icon beside the chat! 💬
+{RAND}.
+The current date is {DAY-} {MONTH} {YEAR}. 📅
+The date is {DAY-} of {MONTH} {YEAR}. 📆
+The date is the {DAY-} of {MONTH} {YEAR}. 📆
+The date is the {DAY-} of {MONTH} {YEAR}. ⌚
+The date is {MONTH} {DAY-} {YEAR}. ⌚
+Great! If you need anything, don't hesitate to ask. 😄
+Excellent! If you would like anything, just ask! ☺️
