@@ -8,7 +8,7 @@ class SapphireZero:
         self.altinputs = files("sapphire").joinpath("model/zero/altinputs.txt").read_text(encoding="utf-8").split("\n")
         self.outputs = files("sapphire").joinpath("model/zero/outputs.txt").read_text(encoding="utf-8").split("\n")
 
-        self.response = []
+        self.response = ["", ""]
         self.done_outputting = 0
         self.get_sentences(prompt)
         if len(self.sentences) > 2:
@@ -17,7 +17,7 @@ class SapphireZero:
             self.set_model("Instant")
 
         sentence_index = 0
-        while not sentence_index == len(self.sentences) - 1:
+        while not sentence_index >= len(self.sentences):
             if not self.sentences[sentence_index] == "":
                 self.tokenize(self.sentences[sentence_index])
                 self.get_numbers(self.sentences[sentence_index])
@@ -67,7 +67,6 @@ class SapphireZero:
                 self.numbers[-1] += i
             index += 1
 
-
     def repeat_and_get_total(self):
         get_total_index = 0
         self.total_for_each_train = []
@@ -110,11 +109,7 @@ class SapphireZero:
             factor -= 0.05
         
         self.response.append(self.outputs_to_use[random.randint(0, len(self.outputs_to_use) - 1)].split(" ")[0])
-        for i in range(5, 21):
-            self.get_next_word_for_word(self.response[-1])
-            if not self.next_word == "":
-                self.response.append(self.next_word)
-        while not self.response[-1][-1] in "!?." or self.response[-2][-1] in "!?.":
+        while not self.response[-1] in "!?." or not self.response[-2] in "!?.":
             self.get_next_word_for_word(self.response[-1])
             if not self.next_word == "":
                 self.response.append(self.next_word)
@@ -126,18 +121,19 @@ class SapphireZero:
 
         for i in self.outputs_to_use:
             tokens = i.split(" ")
+            tokens.append("")
             sub_token_loop = 0
             for j in tokens:
-                if j == word:
-                    if not ((sub_token_loop + 1 < len(tokens) and self.response[-1] == tokens[sub_token_loop + 1]) or (sub_token_loop - 1 >= 0 and self.response[-1] == tokens[sub_token_loop - 1])):
-                        if len(self.response) < 3 or not ((sub_token_loop + 1 < len(tokens) and self.response[-2] == tokens[sub_token_loop + 1]) or (sub_token_loop - 1 >= 0 and self.response[-3] == tokens[sub_token_loop - 1])):
-                            if (sub_token_loop + 1) < len(tokens) and tokens[sub_token_loop + 1] != "":
+                if j == word and not j == "":
+                    if not (self.response[-1] == tokens[sub_token_loop + 1] or self.response[-1] == tokens[sub_token_loop - 1]):
+                        if not (self.response[-2] == tokens[sub_token_loop + 1] or self.response[-3] == tokens[sub_token_loop - 1]):
+                            if not tokens[sub_token_loop + 1] == "":
                                 words.append(tokens[sub_token_loop + 1])
-                                if len(self.response) >= 2 and (sub_token_loop - 1) >= 0 and tokens[sub_token_loop - 1] == self.response[-2]:
+                                if tokens[sub_token_loop - 1] == self.response[-2]:
                                     total.append(2)
                                 else:
                                     total.append(1)
-                            elif (sub_token_loop + 1) < len(tokens):
+                            else:
                                 total[words.index(tokens[sub_token_loop + 1])] += 1
                 sub_token_loop += 1
         
