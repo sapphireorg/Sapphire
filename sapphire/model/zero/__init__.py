@@ -4,11 +4,11 @@ import math
 
 class SapphireZero:
     def __init__(self, prompt):
-        self.inputs = files("sapphire").joinpath("model/zero/inputs.txt").read_text(encoding="utf-8").split("\n")
-        self.altinputs = files("sapphire").joinpath("model/zero/altinputs.txt").read_text(encoding="utf-8").split("\n")
-        self.outputs = files("sapphire").joinpath("model/zero/outputs.txt").read_text(encoding="utf-8").split("\n")
+        self.inputs = files("sapphire").joinpath("model/zero/inputs.txt").read_text(encoding="utf-8").splitlines()
+        self.altinputs = files("sapphire").joinpath("model/zero/altinputs.txt").read_text(encoding="utf-8").splitlines()
+        self.outputs = files("sapphire").joinpath("model/zero/outputs.txt").read_text(encoding="utf-8").splitlines()
 
-        self.response = ["", ""]
+        self.response = [" ", " "]
         self.done_outputting = 0
         self.get_sentences(prompt)
         if len(self.sentences) > 2:
@@ -49,7 +49,7 @@ class SapphireZero:
         self.tokens = [""]
         index = 0
         for i in sentence:
-            if i == " " and sentence[index + 1] != " ":
+            if i == " " and self.tokens[-1] != "":
                 self.tokens.append("")
             elif not i in "?!._[]()/\\|," and i in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-+/*":
                 self.tokens[-1] += i
@@ -75,7 +75,7 @@ class SapphireZero:
             token_loop = 0
             total_word_count = 0
             for j in tmp_tokens:
-                if tmp_tokens[token_loop] in j:
+                if j.lower() in [t.lower() for t in self.tokens]:
                     total_word_count += 1
                 token_loop += 1
             self.total_for_each_train.append(total_word_count)
@@ -84,7 +84,7 @@ class SapphireZero:
             token_loop = 0
             total_word_count = 0
             for j in tmp_tokens:
-                if tmp_tokens[token_loop] in j:
+                if j.lower() in [t.lower() for t in self.tokens]:
                     total_word_count += 1
                 token_loop += 1
             if total_word_count > self.total_for_each_train[-1]:
@@ -108,11 +108,14 @@ class SapphireZero:
                 token_loop += 1
             factor -= 0.05
         
+        if not self.outputs_to_use:
+            self.outputs_to_use = [""]
         self.response.append(self.outputs_to_use[random.randint(0, len(self.outputs_to_use) - 1)].split(" ")[0])
-        while not self.response[-1] in "!?." or not self.response[-2] in "!?.":
+        while len(self.response) < 200:
             self.get_next_word_for_word(self.response[-1])
-            if not self.next_word == "":
-                self.response.append(self.next_word)
+            if self.next_word == "":
+                break
+            self.response.append(self.next_word)
 
     def get_next_word_for_word(self, word):
         total = []
@@ -133,8 +136,6 @@ class SapphireZero:
                                     total.append(2)
                                 else:
                                     total.append(1)
-                            else:
-                                total[words.index(tokens[sub_token_loop + 1])] += 1
                 sub_token_loop += 1
         
         token_loop = 0
