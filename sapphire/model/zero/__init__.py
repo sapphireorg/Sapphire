@@ -27,7 +27,7 @@ class SapphireZero:
         self.done_outputting = 1
 
     def output(self):
-        return self.response
+        return self.response[2:]
 
     def get_sentences(self, prompt):
         self.sentences = [""]
