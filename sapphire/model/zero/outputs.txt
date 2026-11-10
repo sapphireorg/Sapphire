@@ -38,7 +38,7 @@ Yellow and Blue is Green.
 Yellow plus Blue makes Green.
 Red and Yellow make Orange.
 Red plus Yellow create Orange.
-Scratch is a visual block-based programming language designed to teach 8 to 16 year olds how to code, although it can be used by people of any age. The there are many different categories, or colours, of blocks that provide different funcions.
+Scratch is a visual block-based programming language designed to teach 8 to 16 year olds how to code, although it can be used by people of any age. The there are many different categories, or colours, of blocks that provide different functions.
 Scratch is a visual programming language designed to teach students to code, but it can be used by anyone age. There are many different blocks, which all provide different functions.
 ¡Hola! ¿Que tal?
 ¡Hola! ¿Como estas?

@@ -1,7 +1,9 @@
 import sapphire.models
 
-prompt = "What countries are in Asia?"
+environment = {
+    "USERNAME": "User"
+}
 
 while True:
     prompt = input("User: ")
-    print("Sapphire:", sapphire.models.zero(prompt))
+    print("Sapphire:", sapphire.models.zero(prompt, environment))

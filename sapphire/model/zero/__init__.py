@@ -1,12 +1,16 @@
 from importlib.resources import files
+import datetime
 import random
 import math
 
 class SapphireZero:
-    def __init__(self, prompt):
+    def __init__(self, prompt, environment):
         self.inputs = files("sapphire").joinpath("model/zero/inputs.txt").read_text(encoding="utf-8").splitlines()
         self.altinputs = files("sapphire").joinpath("model/zero/altinputs.txt").read_text(encoding="utf-8").splitlines()
         self.outputs = files("sapphire").joinpath("model/zero/outputs.txt").read_text(encoding="utf-8").splitlines()
+
+        self.username = environment["USERNAME"]
+        self.current_date = datetime.datetime.now()
 
         self.response = [" ", " "]
         self.done_outputting = 0
@@ -91,6 +95,56 @@ class SapphireZero:
                 self.total_for_each_train[-1] = total_word_count
             get_total_index += 1
 
+    def parse_smart_chips(self, word):
+        try:
+            if "{USERNAME}" in word:
+                return word.replace("{USERNAME}", self.username)
+            elif "{RAND}" in word:
+                return word.replace("{RAND}", str(random.randint(1, 1000)))
+            elif "{RANDB}" in word:
+                try:
+                    return word.replace("{RANDB}", str(random.randint(self.numbers[0], self.numbers[1])))
+                except:
+                    return word.replace("{RANDB}", str(random.randint(1, 1000)))
+            elif "{DAY-}" in word:
+                if not str(self.current_date.day)[0] == "1":
+                    if str(self.current_date.day)[1] == "1":
+                        return str(self.current_date.day) + "st"
+                    elif str(self.current_date.day)[1] == "2":
+                        return str(self.current_date.day) + "nd"
+                    elif str(self.current_date.day)[1] == "3":
+                        return str(self.current_date.day) + "rd"
+                    else:
+                        return str(self.current_date.day) + "th"
+                else:
+                    return str(self.current_date.day) + "th"
+            elif "{MONTH}" in word:
+                return word.replace("{MONTH}", self.current_date.month)
+            elif "{YEAR}" in word:
+                return word.replace("{YEAR}", self.current_date.year)
+            elif (word[0] == "{" and word[2] == "}") and word[1] in "0123456789":
+                try:
+                    return self.numbers[int(word[1])]
+                except:
+                    return ""
+            elif (word[0] == "{" and word[4] == "}") and word[1] in "0123456789":
+                try:
+                    if word[2] == "+":
+                        return str(int(word[1]) + int(word[3]))
+                    elif word[2] == "-":
+                        return str(int(word[1]) - int(word[3]))
+                    elif word[2] == "*":
+                        return str(int(word[1]) * int(word[3]))
+                    elif word[2] == "/":
+                        return str(int(word[1]) / int(word[3]))
+                    else:
+                        return ""
+                except:
+                    return ""
+            else:
+                return word
+        except:
+            return word
 
     def create_content(self):
         content_for_response = ""
@@ -110,12 +164,12 @@ class SapphireZero:
         
         if not self.outputs_to_use:
             self.outputs_to_use = [""]
-        self.response.append(self.outputs_to_use[random.randint(0, len(self.outputs_to_use) - 1)].split(" ")[0])
+        self.response.append(self.parse_smart_chips(self.outputs_to_use[random.randint(0, len(self.outputs_to_use) - 1)].split(" ")[0]))
         while len(self.response) < 200:
             self.get_next_word_for_word(self.response[-1])
             if self.next_word == "":
                 break
-            self.response.append(self.next_word)
+            self.response.append(self.parse_smart_chips(self.next_word))
 
     def get_next_word_for_word(self, word):
         total = []
